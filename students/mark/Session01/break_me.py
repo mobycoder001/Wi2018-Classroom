@@ -23,33 +23,46 @@ def simpleNameError():
     """Example to raise a type NameError"""
     """Call an function with a value not defined"""
 
-    raise NameError('Raising a NameError')
+    try:
+        raise NameError('Raising a NameError')
+    except NameError as e:
+        print("FError: ", e)
 
 
 def altNameError():
-    print(yourstuffisbroke)
+    try:
+        print(yourstuffisbroke)
+    except NameError as e:
+        print("FError: ", e)
+
 
 
 def simpleTypeError():
     """Example to raise a type TypeError"""
-
-    raise TypeError('Raising a TypeError')
+    try:
+        raise TypeError('Raising a TypeError')
+    except TypeError as e:
+        print("FError: ", e)
 
 
 def altTypeError():
     """Example to raise a type TypeError"""
 
-    notANumber = "1"
-    total = notANumber + 3 
+    try:
+        notANumber = "1"
+        total = notANumber + 3
+    except TypeError as e:
+        print("FError: ", e)
 
-    return total
+    return 0
 
 
 def simpleSyntaxError():
     """Example to raise a type SyntaxError"""
-
-    raise SyntaxError('Raising a SyntaxError')
-
+    try:
+        raise SyntaxError('Raising a SyntaxError')
+    except SyntaxError as e:
+        print("FError: ", e)
 
 def altSyntaxError():
     """Alt Example to raise a type SyntaxError"""
@@ -90,15 +103,21 @@ def altSyntaxError():
 
 def simpleAttributeError():
     """Example to raise a type AttributeError"""
+    try:
+        raise AttributeError('Raising a AttributeError')
+    except AttributeError as e:
+            print("FError: ", e)
 
-    raise AttributeError('Raising a AttributeError')
 
 def altAttributeError():
     """create an attribute error """
 
-    """Created by attempting to use an attribute which does not exist for the datatype"""
-    a="sometext"
-    a.append["somejunktext"]
+    try:
+        """Created by attempting to use an attribute which does not exist for the datatype"""
+        a="sometext"
+        a.append["somejunktext"]
+    except AttributeError as e:
+        print("FError: ", e)
 
     return 0
 
@@ -120,44 +139,54 @@ def getValue():
 ####
 
 
-try:
-    """Catch the error if the value is not correctly entered and reprompt the user"""
-    """Collects garbage input like $"""
-    inputErrorNoG=getValue()
-except:
-    inputErrorNoG=getValue()
+def commentOut():
+    try:
+        """Catch the error if the value is not correctly entered and reprompt the user"""
+        """Collects garbage input like $"""
+        inputErrorNoG=getValue()
+    except:
+        inputErrorNoG=getValue()
 
-    
+
+
 """Call the function to create the error"""
 
-if (inputErrorNoG == 1):
-    print(inputErrorNoG)
-    simpleNameError()
-elif (inputErrorNoG == 2):
-    print(inputErrorNoG)
-    simpleTypeError()
-elif (inputErrorNoG == 3):
-    print(inputErrorNoG)
-    simpleSyntaxError()
-elif (inputErrorNoG == 4):
-    print(inputErrorNoG)
-    simpleAttributeError()
-elif (inputErrorNoG == 5):
-    print(inputErrorNoG)
-    altNameError()
-elif (inputErrorNoG == 6):
-    print(inputErrorNoG)
-    altTypeError()
-elif (inputErrorNoG == 7):
-    print(inputErrorNoG)
-    altSyntaxError()
-elif (inputErrorNoG == 8):
-    print(inputErrorNoG)
-    altAttributeError()
-elif (inputErrorNoG == 9):
-    print(inputErrorNoG)
-    noErrorsPlease()
-else:
-    print('Not a valid choice for an error to create:', inputErrorNoG)
-
-
+for inputErrorNoG in range(1, 10):
+    if (inputErrorNoG == 1):
+        print(inputErrorNoG)
+        try:
+            simpleNameError()
+        except NameError as e:
+            print("Error:", e)
+    elif (inputErrorNoG == 2):
+        print(inputErrorNoG)
+        try:
+            simpleTypeError()
+        except:
+            pass
+    elif (inputErrorNoG == 3):
+        try:
+            print(inputErrorNoG)
+            simpleSyntaxError()
+        except:
+            pass
+    elif (inputErrorNoG == 4):
+        print(inputErrorNoG)
+        simpleAttributeError()
+    elif (inputErrorNoG == 5):
+        print(inputErrorNoG)
+        altNameError()
+    elif (inputErrorNoG == 6):
+        print(inputErrorNoG)
+        altTypeError()
+    elif (inputErrorNoG == 7):
+        print(inputErrorNoG)
+        altSyntaxError()
+    elif (inputErrorNoG == 8):
+        print(inputErrorNoG)
+        altAttributeError()
+    elif (inputErrorNoG == 9):
+        print(inputErrorNoG)
+        noErrorsPlease()
+    else:
+        print('Not a valid choice for an error to create:', inputErrorNoG)
